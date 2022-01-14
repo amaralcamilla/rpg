@@ -13,6 +13,8 @@ public class AppRpg {
 		
 		System.out.println("Seja bem vindo(a) à Batalha Final do House of DEVs!");
 		
+		// TODO try/catch
+		
 		System.out.println("Escolha o nível de dificuldade: ");
 		System.out.println("1: Fácil");
 		System.out.println("2: Normal");
