@@ -9,6 +9,10 @@ public class Character {
 
 }
 
+//Vida
+//Ataque
+//Defesa
+
 
 //Nome
 //Sexo
