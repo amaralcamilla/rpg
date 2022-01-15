@@ -1,8 +1,21 @@
 package entities;
 
-public class Weapon {
+public abstract class Weapon {
+	private String weaponName;
+	private int weaponDamage;
+	
+	public Weapon(String weaponName, int weaponDamage) {
+		super();
+		this.weaponName = weaponName;
+		this.weaponDamage = weaponDamage;
+	}
 
+	public String getWeaponName() {
+		return weaponName;
+	}
+
+	public int getWeaponDamage() {
+		return weaponDamage;
+	}
+	
 }
-
-
-// Espada, machado, martelo, clava, cajado, arco e flecha, besta e virote, livro.
