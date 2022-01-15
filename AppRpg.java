@@ -6,7 +6,7 @@ public class AppRpg {
 
 	private static Scanner keyboard;
 	private static String playerName;
-	private static int level, sex, combatClass, weapon, motivation, moveOn, crossing, armor, potion, fight;
+	private static int level, sex, combatClass, weapon, motivation, moveOn, crossing, armor, potion, fightOrWait;
 	
 	
 	public static final int  EASY_LEVEL = 1;
@@ -16,7 +16,7 @@ public class AppRpg {
 	public static final int  WARRIOR = 1;
 	public static final int  HUNTER = 2;
 	public static final int  PRIEST = 3;
-	public static final int  MAGE = 4;
+	public static final int  SORCERER = 4;
 	
 	public static final int  MASC = 1;
 	public static final int  FEMI = 2;
@@ -26,6 +26,10 @@ public class AppRpg {
 	
 	public static final int  POSITIVE_ANSWER = 1;
 	public static final int  NEGATIVE_ANSWER = 2;
+	
+	public static final int  WALKING = 1;
+	public static final int  RUNNING = 2;
+	public static final int  JUMPING = 3;
 
 	public static void main(String[] args) {
 		keyboard = new Scanner(System.in);
@@ -56,7 +60,7 @@ public class AppRpg {
 			System.out.println("1: Guerreiro");
 			System.out.println("2: Caçador");
 			System.out.println("3: Sacerdote");
-			System.out.println("4: Mago");
+			System.out.println("4: Feiticeiro");
 		} else if (sex == FEMI) {
 			System.out.println("1: Guerreira");
 			System.out.println("2: Caçadora");
@@ -71,23 +75,23 @@ public class AppRpg {
 		System.out.println("Escolha uma arma: ");
 
 		switch (combatClass) {
-		case 1: {
+		case WARRIOR: {
 			System.out.println("1: Espada");
 			System.out.println("2: Machado");
 			System.out.println("3: Martelo");
 			break;
 		}
-		case 2: {
+		case HUNTER: {
 			System.out.println("1: Arco e flecha");
 			System.out.println("2: Besta e virote");
 			break;
 		}
-		case 3: {
+		case PRIEST: {
 			System.out.println("1: Clava");
 			System.out.println("2: Livro");
 			break;
 		}
-		case 4: {
+		case SORCERER: {
 			System.out.println("1: Cajado");
 			System.out.println("2: Livro");
 			break;
@@ -148,7 +152,7 @@ public class AppRpg {
 		crossing = keyboard.nextInt();
 
 		switch (crossing) {
-		case 1: {
+		case WALKING: {
 			System.out.println(
 					"Você toma cuidado e vai caminhando vagarosamente em direção à luz. Quando você pisa exatamente embaixo da porta, você sente o chão ceder levemente, como se tivesse pisado em uma pedra solta. Você ouve um ruído de mecanismos se movimentando, e uma escotilha se abre no teto atrás de você, no corredor. Flechas voam da escotilha em sua direção, e você salta para dentro da sala, porém uma delas te acerta na perna.");
 
@@ -156,12 +160,12 @@ public class AppRpg {
 
 			break;
 		}
-		case 2: {
+		case RUNNING: {
 			System.out.println(
 					"Você respira fundo e desata a correr em direção à sala. Quando passa pela porta, sente que pisou em uma pedra solta, mas não dá muita importância e segue para dentro da sala, olhando ao redor à procura de inimigos. Não tem ninguém, mas você ouve sons de flechas batendo na pedra atrás de você, e quando se vira, vê várias flechas no chão. Espiando pela porta, você entende que pisou em uma armadilha que soltou flechas de uma escotilha aberta no teto, mas por sorte você entrou correndo e conseguiu escapar desse ataque surpresa.");
 			break;
 		}
-		case 3: {
+		case JUMPING: {
 			System.out.println(
 					"Você se concentra e pula em direção à luz, saltando de antes da porta até o interior da sala.");
 			break;
@@ -222,18 +226,20 @@ public class AppRpg {
 		System.out.println("1: Atacar");
 		System.out.println("2: Esperar");
 
-		fight = keyboard.nextInt();
+		fightOrWait = keyboard.nextInt();
 
-		if (fight == POSITIVE_ANSWER) {
+		if (fightOrWait == POSITIVE_ANSWER) {
 
-			// TODO loop de combate
+			// TODO loop de combate - verifique se teve vitoria de alguem
 
 		}
-		while (fight == NEGATIVE_ANSWER) {
+		while (fightOrWait == NEGATIVE_ANSWER) {
 			System.out.println("Vai ficar aí parado?");
 			System.out.println("1: Atacar");
 			System.out.println("2: Esperar");
 		}
+		
+		fightOrWait = keyboard.nextInt();
 
 		System.out.println("Você conseguiu!");
 		if (motivation == REVANGE) {
