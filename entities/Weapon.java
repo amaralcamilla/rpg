@@ -1,17 +1,10 @@
 package entities;
 
 public abstract class Weapon {
-	private String weaponName;
 	private int weaponDamage;
 	
-	public Weapon(String weaponName, int weaponDamage) {
-		super();
-		this.weaponName = weaponName;
+	public Weapon(int weaponDamage) {
 		this.weaponDamage = weaponDamage;
-	}
-
-	public String getWeaponName() {
-		return weaponName;
 	}
 
 	public int getWeaponDamage() {
