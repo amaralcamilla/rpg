@@ -18,7 +18,7 @@ public class Player extends Character {
 		this.playerName = playerName;
 		this.sex = sex;
 	}
-
+	
 	public String getPlayerName() {
 		return playerName;
 	}

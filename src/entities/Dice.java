@@ -3,7 +3,7 @@ package entities;
 import java.util.Random;
 
 public abstract class Dice {
-	private Random random;
+	private Random random = new Random();
 	private int maxDiceValue;
 	
 	public Dice(int maxDiceValue) {

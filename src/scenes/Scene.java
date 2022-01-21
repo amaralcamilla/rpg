@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Scene {
 
-	Scanner keyboard;
+	protected Scanner keyboard;
 	
 	public Scene(Scanner keyboard) {
 		this.keyboard = keyboard;

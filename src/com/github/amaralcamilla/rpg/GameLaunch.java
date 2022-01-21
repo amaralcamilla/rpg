@@ -1,9 +1,12 @@
 package com.github.amaralcamilla.rpg;
 
 import java.util.Scanner;
+
+import entities.Enemy;
 import entities.Level;
 import entities.Player;
 import scenes.SceneArmor;
+import scenes.combat.SceneCombat1;
 
 public class GameLaunch {
 
@@ -144,7 +147,17 @@ public class GameLaunch {
 
 		@SuppressWarnings("unused")
 		SceneArmor sceneArmor = new SceneArmor(keyboard, player.getCombatClass());
-
+		
+		Enemy enemy = new Enemy (100, null, -1);
+		SceneCombat1 sceneCombat1 = new SceneCombat1(keyboard, player, enemy);
+		if(sceneCombat1.getResult() != Parameters.WON) {
+			System.out.println("Vc perdeu");
+			return;
+		}
+		
+		// TODO COLOCAR RESULTADO DE COMBATE DENTRO DE UMA VARIÁVEL (decidir se continua jogo ou não)
+		
+		
 	}
 
 }

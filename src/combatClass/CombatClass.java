@@ -26,6 +26,10 @@ public abstract class CombatClass {
 		return weapons;
 	}
 
+	public Weapon getWeapon() {
+		return weapons[selectedWeapon];
+	}
+	
 	public void setDefense(int i) {
 		this.defense = i;
 	}

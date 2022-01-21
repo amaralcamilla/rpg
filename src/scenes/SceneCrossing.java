@@ -2,9 +2,7 @@ package scenes;
 
 public class SceneCrossing extends Scene {
 	
-	public static final int  WALKING = 1;
-	public static final int  RUNNING = 2;
-	public static final int  JUMPING = 3;
+	
 
 
 	System.out.println(
