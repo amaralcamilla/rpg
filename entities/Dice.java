@@ -6,8 +6,7 @@ public abstract class Dice {
 	private Random random;
 	private int maxDiceValue;
 	
-	public Dice(Random random, int maxDiceValue) {
-		this.random = random;
+	public Dice(int maxDiceValue) {
 		this.maxDiceValue = maxDiceValue;
 	}
 
