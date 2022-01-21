@@ -2,13 +2,14 @@ package com.github.amaralcamilla.rpg;
 
 import java.util.Scanner;
 import entities.Item;
+import entities.Level;
 
 public class GameLaunch {
 
 	private static Scanner keyboard;
 	
 	private static String playerName;
-	private static int level, sex, combatClass, weapon;
+	private static int selectedLevel, selectedSex, combatClass, weapon;
 
 	public static final int EASY_LEVEL = 1;
 	public static final int NORMAL_LEVEL = 2;
@@ -27,23 +28,27 @@ public class GameLaunch {
 		keyboard = new Scanner(System.in);
 
 		System.out.println("Seja bem vindo(a) à Batalha Final do House of DEVs!");
-
+		
+		Level level = null;
 		try {
 			System.out.println("Escolha o nível de dificuldade: ");
 			System.out.println("1: Fácil");
 			System.out.println("2: Normal");
 			System.out.println("3: Difícil");
 
-			level = keyboard.nextInt();
+			selectedLevel = keyboard.nextInt();
 
-			switch (level) {
+			switch (selectedLevel) {
 			case EASY_LEVEL: {
+				level = Level.EASY_LEVEL;
 				break;
 			}
 			case NORMAL_LEVEL: {
+				level = Level.NORMAL_LEVEL;
 				break;
 			}
 			case HARD_LEVEL: {
+				level = Level.HARD_LEVEL;
 				break;
 			}
 			default:
@@ -52,7 +57,7 @@ public class GameLaunch {
 
 		} catch (Exception e) {
 			System.out.println("Digite uma opção válida (1, 2 ou 3).");
-			level = keyboard.nextInt();
+			selectedLevel = keyboard.nextInt();
 		}
 
 		System.out.println("Digite seu nome de combate: ");
@@ -65,9 +70,9 @@ public class GameLaunch {
 			System.out.println("1: Masculino");
 			System.out.println("2: Feminino");
 
-			sex = keyboard.nextInt();
+			selectedSex = keyboard.nextInt();
 
-			switch (sex) {
+			switch (selectedSex) {
 			case MASC: {
 				break;
 			}
@@ -79,18 +84,18 @@ public class GameLaunch {
 			}
 		} catch (Exception e) {
 			System.out.println("Digite uma opção válida (1 ou 2).");
-			sex = keyboard.nextInt();
+			selectedSex = keyboard.nextInt();
 		}
 
 		
 		try { 
 		System.out.println("Escolha uma classe de combate: ");
-		if (sex == MASC) {
+		if (selectedSex == MASC) {
 			System.out.println("1: Guerreiro");
 			System.out.println("2: Caçador");
 			System.out.println("3: Sacerdote");
 			System.out.println("4: Feiticeiro");
-		} else if (sex == FEMI) {
+		} else if (selectedSex == FEMI) {
 			System.out.println("1: Guerreira");
 			System.out.println("2: Caçadora");
 			System.out.println("3: Sacerdotisa");
@@ -141,6 +146,7 @@ public class GameLaunch {
 			System.out.println("Digite uma opção válida.");
 			weapon = keyboard.nextInt();
 		}
-		
+
 	}
+
 }
