@@ -1,4 +1,8 @@
-package entities;
+package combatClass;
+
+import weapons.Weapon;
+import weapons.WpBook;
+import weapons.WpClub;
 
 public class CcPriest extends CombatClass {
 	private final static int ATTACK = 10;
@@ -10,3 +14,4 @@ public class CcPriest extends CombatClass {
 		super(ATTACK, DEFENSE, WEAPONS);
 	}
 }
+
