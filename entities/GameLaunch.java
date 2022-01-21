@@ -1,35 +1,25 @@
 package com.github.amaralcamilla.rpg;
 
 import java.util.Scanner;
-import entities.Item;
 import entities.Level;
+import entities.Player;
+import scenes.SceneArmor;
 
 public class GameLaunch {
 
 	private static Scanner keyboard;
+
+	private static Player player;
+	private static int selectedLevel;
+
 	
-	private static String playerName;
-	private static int selectedLevel, selectedSex, combatClass, weapon;
-
-	public static final int EASY_LEVEL = 1;
-	public static final int NORMAL_LEVEL = 2;
-	public static final int HARD_LEVEL = 3;
-
-	public static final int WARRIOR = 1;
-	public static final int HUNTER = 2;
-	public static final int PRIEST = 3;
-	public static final int SORCERER = 4;
-
-	public static final int MASC = 1;
-	public static final int FEMI = 2;
-
 
 	public static void main(String[] args) {
 		keyboard = new Scanner(System.in);
 
 		System.out.println("Seja bem vindo(a) à Batalha Final do House of DEVs!");
-		
-		Level level = null;
+
+		Level level;
 		try {
 			System.out.println("Escolha o nível de dificuldade: ");
 			System.out.println("1: Fácil");
@@ -39,15 +29,15 @@ public class GameLaunch {
 			selectedLevel = keyboard.nextInt();
 
 			switch (selectedLevel) {
-			case EASY_LEVEL: {
+			case Parameters.EASY_LEVEL: {
 				level = Level.EASY_LEVEL;
 				break;
 			}
-			case NORMAL_LEVEL: {
+			case Parameters.NORMAL_LEVEL: {
 				level = Level.NORMAL_LEVEL;
 				break;
 			}
-			case HARD_LEVEL: {
+			case Parameters.HARD_LEVEL: {
 				level = Level.HARD_LEVEL;
 				break;
 			}
@@ -61,9 +51,12 @@ public class GameLaunch {
 		}
 
 		System.out.println("Digite seu nome de combate: ");
-		playerName = keyboard.next();
-		System.out.println("Boa escolha " + playerName + ", senti firmeza!");
 
+		player = new Player(keyboard.next(), Parameters.DEFAULT_LIFE, -1, null, -1);
+
+		System.out.println("Boa escolha " + player.getPlayerName() + ", senti firmeza!");
+
+		int selectedSex = -1;
 		
 		try {
 			System.out.println("Selecione o sexo do seu personagem: ");
@@ -71,12 +64,13 @@ public class GameLaunch {
 			System.out.println("2: Feminino");
 
 			selectedSex = keyboard.nextInt();
+			player.setSex(selectedSex);
 
 			switch (selectedSex) {
-			case MASC: {
+			case Parameters.MASC: {
 				break;
 			}
-			case FEMI: {
+			case Parameters.FEMI: {
 				break;
 			}
 			default:
@@ -84,68 +78,72 @@ public class GameLaunch {
 			}
 		} catch (Exception e) {
 			System.out.println("Digite uma opção válida (1 ou 2).");
-			selectedSex = keyboard.nextInt();
 		}
 
-		
-		try { 
-		System.out.println("Escolha uma classe de combate: ");
-		if (selectedSex == MASC) {
-			System.out.println("1: Guerreiro");
-			System.out.println("2: Caçador");
-			System.out.println("3: Sacerdote");
-			System.out.println("4: Feiticeiro");
-		} else if (selectedSex == FEMI) {
-			System.out.println("1: Guerreira");
-			System.out.println("2: Caçadora");
-			System.out.println("3: Sacerdotisa");
-			System.out.println("4: Feiticeira");
-		} else {
-			System.out.println("Digite uma opção válida (1, 2, 3 ou 4).");
-		}
-
-		combatClass = keyboard.nextInt();
+		try {
+			System.out.println("Escolha uma classe de combate: ");
+			if (selectedSex == Parameters.MASC) {
+				System.out.println("1: Guerreiro");
+				System.out.println("2: Caçador");
+				System.out.println("3: Sacerdote");
+				System.out.println("4: Feiticeiro");
+			} else if (selectedSex == Parameters.FEMI) {
+				System.out.println("1: Guerreira");
+				System.out.println("2: Caçadora");
+				System.out.println("3: Sacerdotisa");
+				System.out.println("4: Feiticeira");
+			} else {
+				System.out.println("Digite uma opção válida (1, 2, 3 ou 4).");
+			}
 
 		} catch (Exception e) {
 			System.out.println("Digite uma opção válida (1, 2, 3 ou 4).");
-			combatClass = keyboard.nextInt();
 		}
+
+		int selectedCombatClass;
+		selectedCombatClass = keyboard.nextInt();
 		
+		player.setCombatClass(selectedCombatClass);
+
 		try {
-		System.out.println("Escolha uma arma: ");
+			System.out.println("Escolha uma arma: ");
 
-		switch (combatClass) {
-		case WARRIOR: {
-			System.out.println("1: Espada");
-			System.out.println("2: Machado");
-			System.out.println("3: Martelo");
-			break;
-		}
-		case HUNTER: {
-			System.out.println("1: Arco e flecha");
-			System.out.println("2: Besta e virote");
-			break;
-		}
-		case PRIEST: {
-			System.out.println("1: Clava");
-			System.out.println("2: Livro");
-			break;
-		}
-		case SORCERER: {
-			System.out.println("1: Cajado");
-			System.out.println("2: Livro");
-			break;
-		}
-		default:
-			throw new Error("Digite uma opção válida.");
-		}
+			switch (selectedCombatClass) {
+			case Parameters.WARRIOR: {
+				System.out.println("1: Espada");
+				System.out.println("2: Machado");
+				System.out.println("3: Martelo");
+				break;
+			}
+			case Parameters.HUNTER: {
+				System.out.println("1: Arco e flecha");
+				System.out.println("2: Besta e virote");
+				break;
+			}
+			case Parameters.PRIEST: {
+				System.out.println("1: Clava");
+				System.out.println("2: Livro");
+				break;
+			}
+			case Parameters.SORCERER: {
+				System.out.println("1: Cajado");
+				System.out.println("2: Livro");
+				break;
+			}
+			default:
+				throw new Error("Digite uma opção válida.");
+			}
 
-		weapon = keyboard.nextInt();
-		
+			int selectedWeapon = keyboard.nextInt();
+			player.getCombatClass().setSelectedWeapon(selectedWeapon -1);
+
 		} catch (Exception e) {
 			System.out.println("Digite uma opção válida.");
-			weapon = keyboard.nextInt();
+			keyboard.nextInt();
 		}
+
+		@SuppressWarnings("unused")
+		SceneArmor sceneArmor = new SceneArmor(keyboard, player.getCombatClass());
 
 	}
 
