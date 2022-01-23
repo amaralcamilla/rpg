@@ -6,6 +6,7 @@ import entities.Player;
 
 public class ScenePotion extends Scene {
 	private static int potion;
+	@SuppressWarnings("unused")
 	private Player player;
 
 	public ScenePotion(Scanner keyboard, Player player) {
@@ -19,7 +20,7 @@ public class ScenePotion extends Scene {
 		potion = keyboard.nextInt();
 
 		if (potion == Parameters.POSITIVE_ANSWER) {
-			System.out.printf("%nVocê recuperou 100% sua vida! Agora você se sente revigorado para seguir adiante!%n");
+			System.out.println("Você recuperou 100% sua vida! Agora você se sente revigorado para seguir adiante!");
 			player.setLife(100);
 
 		} else if (potion == Parameters.NEGATIVE_ANSWER) {

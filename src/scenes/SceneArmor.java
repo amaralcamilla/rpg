@@ -26,6 +26,6 @@ public class SceneArmor extends Scene {
 		} else {
 			System.out.printf("%nDigite uma opção válida.%n");
 		}
-		System.out.println("De armadura nova, com " + combatClass.getDefense() + " de defesa, você se sente mais protegido para os desafios à sua frente.");
+		System.out.println("De armadura nova, com " + combatClass.getDefense() + " pontos de defesa, você se sente mais protegido para os desafios à sua frente.");
 	}
 }

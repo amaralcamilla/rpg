@@ -8,10 +8,12 @@ import entities.Player;
 public class Setup {
 	private static Scanner keyboard;
 	private static Player player;
-	private static int selectedLevel;	
-	
+	private static int selectedLevel;
+
 	public Setup() {
-		
+		keyboard = new Scanner(System.in);
+
+		@SuppressWarnings("unused")
 		Level level;
 		try {
 			System.out.println("Escolha o nível de dificuldade: ");
@@ -50,7 +52,7 @@ public class Setup {
 		System.out.println("Boa escolha " + player.getPlayerName() + ", senti firmeza!");
 
 		int selectedSex = -1;
-		
+
 		try {
 			System.out.println("Selecione o sexo do seu personagem: ");
 			System.out.println("1: Masculino");
@@ -95,7 +97,7 @@ public class Setup {
 
 		int selectedCombatClass;
 		selectedCombatClass = keyboard.nextInt();
-		
+
 		player.setCombatClass(selectedCombatClass);
 
 		try {
@@ -128,7 +130,7 @@ public class Setup {
 			}
 
 			int selectedWeapon = keyboard.nextInt();
-			player.getCombatClass().setSelectedWeapon(selectedWeapon -1);
+			player.getCombatClass().setSelectedWeapon(selectedWeapon - 1);
 
 		} catch (Exception e) {
 			System.out.println("Digite uma opção válida.");

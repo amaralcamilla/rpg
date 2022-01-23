@@ -16,17 +16,17 @@ import scenes.combat.SceneCombat1;
 public class GameLaunch {
 
 	private static Scanner keyboard;
-
 	private static Player player;
-	private static int selectedLevel;
-
-	
+	private static int selectedLevel;	
 
 	public static void main(String[] args) {
 		keyboard = new Scanner(System.in);
 
 		System.out.println("Seja bem vindo(a) à Batalha Final do House of DEVs!");
-
+		
+		//Setup setup = new Setup();
+		
+		@SuppressWarnings("unused")
 		Level level;
 		try {
 			System.out.println("Escolha o nível de dificuldade: ");
@@ -65,7 +65,7 @@ public class GameLaunch {
 		System.out.println("Boa escolha " + player.getPlayerName() + ", senti firmeza!");
 
 		int selectedSex = -1;
-		
+
 		try {
 			System.out.println("Selecione o sexo do seu personagem: ");
 			System.out.println("1: Masculino");
@@ -110,7 +110,7 @@ public class GameLaunch {
 
 		int selectedCombatClass;
 		selectedCombatClass = keyboard.nextInt();
-		
+
 		player.setCombatClass(selectedCombatClass);
 
 		try {
@@ -143,14 +143,12 @@ public class GameLaunch {
 			}
 
 			int selectedWeapon = keyboard.nextInt();
-			player.getCombatClass().setSelectedWeapon(selectedWeapon -1);
+			player.getCombatClass().setSelectedWeapon(selectedWeapon - 1);
 
 		} catch (Exception e) {
 			System.out.println("Digite uma opção válida.");
 			keyboard.nextInt();
-		}
-
-		
+		}		
 		
 		System.out.printf("%nA noite se aproxima... %n");
 		
@@ -168,12 +166,12 @@ public class GameLaunch {
 		@SuppressWarnings("unused")
 		SceneCrossing sceneCrossing = new SceneCrossing(keyboard, player);
 				
-		//Enemy enemy = new Enemy (100, null, -1);
-		//SceneCombat1 sceneCombat1 = new SceneCombat1(keyboard, player, enemy);
-		//if(sceneCombat1.getResult() != Parameters.WON) {
-		//	System.out.printf("%nVc perdeu");
-		//	return;
-		//}
+		Enemy enemy = new Enemy (100, null, -1);
+		SceneCombat1 sceneCombat1 = new SceneCombat1(keyboard, player, enemy);
+		if(sceneCombat1.getResult() != Parameters.WON) {
+			System.out.printf("%nGame over.");
+			return;
+		}
 		
 		System.out.printf("%nApós derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados, e olha em volta, encarando todas aquelas peças de armaduras resistentes e em ótimo estado.%n");
 		

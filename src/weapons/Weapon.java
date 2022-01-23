@@ -10,10 +10,7 @@ public abstract class Weapon {
 	public int getWeaponDamage() {
 		return weaponDamage;
 	}
-	
-	//Quando iterar (for) em Item, aparecerá a representação em string.
-	//public String toString() {
-		//return String.format(this.getWeaponName(), this.getWeaponDamage());
-//	}
+
+	public abstract String getWpComplement();
 }
 

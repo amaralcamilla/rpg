@@ -6,6 +6,7 @@ import entities.Dice10;
 import entities.Player;
 
 public class SceneCrossing extends Scene {
+	@SuppressWarnings("unused")
 	private Player player;
 
 	public SceneCrossing(Scanner keyboard, Player player) {
