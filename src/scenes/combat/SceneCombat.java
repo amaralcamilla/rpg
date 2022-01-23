@@ -23,12 +23,11 @@ public class SceneCombat extends Scene {
 		while (true) {
 			System.out.println("1: Atacar");
 			System.out.println("2: Fugir");
+			
 			int decision = keyboard.nextInt();
-
-			if (decision == 2) {
-				combatResult = Parameters.RUNAWAY;
-				return combatResult;
-			} else if (decision == 1) {
+			
+			
+			if (decision == 1) {
 				Dice20 dice = new Dice20();
 				int damage = dice.rollDice() + player.getCombatClass().getAttack() + player.getCombatClass().getWeapon().getWeaponDamage();
 				enemy.setLife(enemy.getLife() - damage);
@@ -37,13 +36,14 @@ public class SceneCombat extends Scene {
 					damage = dice.rollDice();
 					player.setLife(player.getLife() - damage);
 				}
+			
+			} else if (decision == 2) {
+				combatResult = Parameters.RUNAWAY;
+				return combatResult;
 				
 			} else {
 				System.out.println("Escolha uma das opções");
-			}
-			
-			
-			
+			}	
 			
 			if (player.getLife() <= 0) {
 				combatResult = Parameters.LOST;

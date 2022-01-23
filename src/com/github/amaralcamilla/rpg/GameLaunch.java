@@ -6,6 +6,11 @@ import entities.Enemy;
 import entities.Level;
 import entities.Player;
 import scenes.SceneArmor;
+import scenes.SceneCrossing;
+import scenes.SceneFinalMessage;
+import scenes.SceneGoAhead;
+import scenes.SceneMotivation;
+import scenes.ScenePotion;
 import scenes.combat.SceneCombat1;
 
 public class GameLaunch {
@@ -145,18 +150,45 @@ public class GameLaunch {
 			keyboard.nextInt();
 		}
 
+		
+		
+		System.out.printf("%nA noite se aproxima... %n");
+		
+		@SuppressWarnings("unused")
+		SceneMotivation sceneMotivation = new SceneMotivation (keyboard);
+		
+		System.out.printf("%nInspirado pelo motivo que te trouxe até aqui... %n");
+		System.out.printf("%nA escuridão te envolve... %n");
+		
+		@SuppressWarnings("unused")
+		SceneGoAhead sceneGoAhead = new SceneGoAhead (keyboard);
+		
+		System.out.printf("%nVocê se pergunta se dentro dessa sala pode haver inimigos, ou alguma armadilha, e pondera sobre como passar pela porta.%n");
+		
+		@SuppressWarnings("unused")
+		SceneCrossing sceneCrossing = new SceneCrossing(keyboard, player);
+				
+		//Enemy enemy = new Enemy (100, null, -1);
+		//SceneCombat1 sceneCombat1 = new SceneCombat1(keyboard, player, enemy);
+		//if(sceneCombat1.getResult() != Parameters.WON) {
+		//	System.out.printf("%nVc perdeu");
+		//	return;
+		//}
+		
+		System.out.printf("%nApós derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados, e olha em volta, encarando todas aquelas peças de armaduras resistentes e em ótimo estado.%n");
+		
 		@SuppressWarnings("unused")
 		SceneArmor sceneArmor = new SceneArmor(keyboard, player.getCombatClass());
 		
-		Enemy enemy = new Enemy (100, null, -1);
-		SceneCombat1 sceneCombat1 = new SceneCombat1(keyboard, player, enemy);
-		if(sceneCombat1.getResult() != Parameters.WON) {
-			System.out.println("Vc perdeu");
-			return;
-		}
+		//TODO Combate 2
 		
-		// TODO COLOCAR RESULTADO DE COMBATE DENTRO DE UMA VARIÁVEL (decidir se continua jogo ou não)
+		@SuppressWarnings("unused")
+		ScenePotion scenePotion = new ScenePotion(keyboard, player);
 		
+		//combate3
+		
+		@SuppressWarnings("unused")
+		SceneFinalMessage sceneFinalMessage = new SceneFinalMessage(keyboard);
 		
 	}
 
