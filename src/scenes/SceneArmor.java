@@ -2,6 +2,7 @@ package scenes;
 
 import java.util.Scanner;
 import com.github.amaralcamilla.rpg.Parameters;
+import com.github.amaralcamilla.rpg.Tools;
 import combatClass.CombatClass;
 
 public class SceneArmor extends Scene {
@@ -10,13 +11,12 @@ public class SceneArmor extends Scene {
 	public SceneArmor(Scanner keyboard, CombatClass combatClass) {
 		super(keyboard);
 
-		System.out.println("1: Pegar uma nova armadura!");
-		System.out.println("2: Seguir com a armadura esculhambada.");
-
-		armor = keyboard.nextInt();
+		armor = Tools.getSelection(keyboard, "1: Pegar uma nova armadura!\n2: Seguir com a armadura esculhambada.", 1,
+				2);
 
 		if (armor == Parameters.POSITIVE_ANSWER) {
-			System.out.printf("%nVocê resolve usar os equipamentos do inimigo contra ele, e trocar algumas peças suas, que estavam danificadas, pelas peças de armaduras existentes na sala.%n");
+			System.out.printf(
+					"%nVocê resolve usar os equipamentos do inimigo contra ele, e trocar algumas peças suas, que estavam danificadas, pelas peças de armaduras existentes na sala.%n");
 
 			combatClass.setDefense(combatClass.getDefense() + 5);
 
@@ -26,6 +26,7 @@ public class SceneArmor extends Scene {
 		} else {
 			System.out.printf("%nDigite uma opção válida.%n");
 		}
-		System.out.println("De armadura nova, com " + combatClass.getDefense() + " pontos de defesa, você se sente mais protegido para os desafios à sua frente.");
+		System.out.println("De armadura nova, com " + combatClass.getDefense()
+				+ " pontos de defesa, você se sente mais protegido para os desafios à sua frente.");
 	}
 }

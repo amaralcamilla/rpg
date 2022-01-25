@@ -2,6 +2,7 @@ package scenes;
 
 import java.util.Scanner;
 import com.github.amaralcamilla.rpg.Parameters;
+import com.github.amaralcamilla.rpg.Tools;
 import entities.Dice10;
 import entities.Player;
 
@@ -13,16 +14,15 @@ public class SceneCrossing extends Scene {
 		super(keyboard);
 		this.player = player;
 
-		System.out.println("1: Andando cuidadosamente");
-		System.out.println("2: Correndo");
-		System.out.println("3: Saltando");
-
-		int crossing = keyboard.nextInt();
+		int crossing = Tools.getSelection(keyboard, "\nVocê se pergunta se dentro dessa sala pode haver inimigos, ou alguma armadilha, e pondera sobre como passar pela porta.\n1: Andando cuidadosamente\n2: Correndo\n3: Saltando",
+				1, 3);
 
 		switch (crossing) {
 		case Parameters.WALKING: {
 			System.out.printf("%nVocê toma cuidado e vai caminhando vagarosamente em direção à luz. Quando você pisa exatamente embaixo da porta, você sente o chão ceder levemente, como se tivesse pisado em uma pedra solta. Você ouve um ruído de mecanismos se movimentando, e uma escotilha se abre no teto atrás de você, no corredor. Flechas voam da escotilha em sua direção, e você salta para dentro da sala, porém uma delas te acerta na perna.%n");
 
+			//TODO if life > 0 
+			
 			Dice10 dice = new Dice10();
 			int damage = dice.rollDice();
 			player.setLife(player.getLife() - damage);

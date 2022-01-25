@@ -12,24 +12,23 @@ public class Parameters {
 
 	public static final int MASC = 1;
 	public static final int FEMI = 2;
-	
+
 	public static final int DEFAULT_LIFE = 100;
-	
-	public static final int  REVENGE = 1;
-	public static final int  GLORY = 2;
-	
-	public static final int  WALKING = 1;
-	public static final int  RUNNING = 2;
-	public static final int  JUMPING = 3;
-	
-	public static final int  WON = 0;
-	public static final int  LOST = 1;
-	
-	public static final int  GO_AHEAD = 1;
-	public static final int  RUNAWAY = 2;
-	
-	public static final int  POSITIVE_ANSWER = 1;
-	public static final int  NEGATIVE_ANSWER = 2;
-	
-	
+
+	public static final int REVENGE = 1;
+	public static final int GLORY = 2;
+
+	public static final int WALKING = 1;
+	public static final int RUNNING = 2;
+	public static final int JUMPING = 3;
+
+	public static final int WON = 0;
+	public static final int LOST = 1;
+
+	public static final int GO_AHEAD = 1;
+	public static final int RUNAWAY = 2;
+
+	public static final int POSITIVE_ANSWER = 1;
+	public static final int NEGATIVE_ANSWER = 2;
+
 }

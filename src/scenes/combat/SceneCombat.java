@@ -13,7 +13,6 @@ public class SceneCombat extends Scene {
 	public Enemy enemy;
 	private int damage;
 	private int criticalDamage;
-	
 
 	public SceneCombat(Scanner keyboard, Player player, Enemy enemy) {
 		super(keyboard);
@@ -22,7 +21,6 @@ public class SceneCombat extends Scene {
 	}
 
 	public int combatLoop() {
-
 		while (true) {
 			System.out.println("1: Atacar");
 			System.out.println("2: Fugir");
@@ -31,25 +29,28 @@ public class SceneCombat extends Scene {
 
 			if (decision == Parameters.GO_AHEAD) {
 				Dice20 dice = new Dice20();
-				damage = dice.rollDice() + player.getCombatClass().getAttack() + player.getCombatClass().getWeapon().getWeaponDamage() - enemy.getCombatClass().getDefense();
 
-				if (dice.rollDice() == 1) {
+				int currentDice = dice.rollDice();
+				if (currentDice == 1) {
 					System.out.println("Você errou seu ataque! O inimigo não sofreu dano algum.");
-				} else if (dice.rollDice() == 20) {
-					criticalDamage = dice.rollDice() + player.getCombatClass().getAttack() + player.getCombatClass().getWeapon().getWeaponDamage();
-					System.out.println("Você acertou um ataque crítico! Você atacou " + player.getCombatClass().getWeapon().getWpComplement() + " e causou" + criticalDamage + "de dano no inimigo!");
-							
+				} else if (currentDice == 20) {
+					criticalDamage = currentDice + player.getCombatClass().getAttack()
+							+ player.getCombatClass().getWeapon().getWeaponDamage();
+					System.out.println("Você acertou um ataque crítico! Você atacou "
+							+ player.getCombatClass().getWeapon().getWpComplement() + " e causou" + criticalDamage
+							+ "de dano no inimigo!");
+					enemy.setLife(enemy.getLife() - criticalDamage);
+
 				} else {
+					damage = currentDice + player.getCombatClass().getAttack()
+							+ player.getCombatClass().getWeapon().getWeaponDamage()
+							- enemy.getCombatClass().getDefense();
+					System.out.println("Você atacou " + player.getCombatClass().getWeapon().getWpComplement()
+							+ " e causou" + damage + "de dano no inimigo!");
+					enemy.setLife(enemy.getLife() - damage);
+				} // Supondo que defesa é sempre menor que os 3 juntos
 
-				}
-
-				
-				
-				
-				
-				enemy.setLife(enemy.getLife() - damage);
-
-				System.out.println("Você atacou " + player.getCombatClass().getWeapon().getWpComplement() + " e causou " + damage + "de dano no inimigo!");
+				// TODO: refatorar para usar método único para inimigo e player
 
 				if (enemy.getLife() >= 0) {
 					damage = dice.rollDice();
@@ -70,13 +71,10 @@ public class SceneCombat extends Scene {
 				combatResult = Parameters.LOST;
 				return combatResult;
 			}
-
 		}
-
 	}
 
 	public int getResult() {
 		return combatResult;
 	}
-
 }
