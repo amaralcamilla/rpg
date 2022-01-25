@@ -1,7 +1,7 @@
 package weapons;
 
 public class WpAxe extends Weapon {
-	private final static int DAMAGE = 10;
+	private final static int DAMAGE = 18;
 		
 	public WpAxe() {
 		super(DAMAGE);

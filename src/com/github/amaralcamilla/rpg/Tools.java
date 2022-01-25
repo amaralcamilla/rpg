@@ -5,20 +5,22 @@ import java.util.Scanner;
 public class Tools {
 
 	public static int getSelection(Scanner keyboard, String s, int first, int last) {
-		int option; 
+		int decision; 
+		
 		while (true) {
 			System.out.println(s);
 			try {
-				option = keyboard.nextInt();
+				decision = keyboard.nextInt();
 			} catch (Exception e) {
-				option = -1;
+				decision = -1;
+				keyboard.nextLine();
 			}
-			if (option >= first && option <= last) {
+			if (decision >= first && decision <= last) {
 				break;
 			} else {
 				System.out.println("Digite uma opção válida.\n");
 			}
 		}
-		return option;
+		return decision;
 	}
 }

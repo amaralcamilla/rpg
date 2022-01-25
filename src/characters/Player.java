@@ -1,12 +1,6 @@
-package entities;
+package characters;
 
 import com.github.amaralcamilla.rpg.Parameters;
-
-import combatClass.CcHunter;
-import combatClass.CcPriest;
-import combatClass.CcSorcerer;
-import combatClass.CcWarrior;
-import combatClass.CombatClass;
 
 public class Player extends Character {
 	private String playerName;
@@ -21,6 +15,9 @@ public class Player extends Character {
 	
 	public String getPlayerName() {
 		return playerName;
+	}
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 
 	public int getSex() {

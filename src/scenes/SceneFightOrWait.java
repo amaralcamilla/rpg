@@ -18,7 +18,7 @@ public class SceneFightOrWait extends Scene {
 
 		}
 		while (fightOrWait == Parameters.NEGATIVE_ANSWER) {
-			System.out.printf("%nVai ficar aí parado? O inimigo está se aproximando...%n");
+			System.out.println("\nVai ficar aí parado? O inimigo está se aproximando...\n");
 			System.out.println("1: Atacar");
 			System.out.println("2: Esperar");
 		}

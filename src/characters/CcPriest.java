@@ -1,12 +1,12 @@
-package combatClass;
+package characters;
 
 import weapons.Weapon;
 import weapons.WpBook;
 import weapons.WpClub;
 
 public class CcPriest extends CombatClass {
-	private final static int ATTACK = 10;
-	private final static int DEFENSE = 10;
+	private final static int ATTACK = 55;
+	private final static int DEFENSE = 25;
 	private final static Weapon[] WEAPONS = {new WpClub(), new WpBook()};	
 	
 	

@@ -1,4 +1,4 @@
-package combatClass;
+package characters;
 
 import weapons.Weapon;
 

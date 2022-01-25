@@ -1,6 +1,4 @@
-package entities;
-
-import combatClass.CombatClass;
+package characters;
 
 public class Character {
 	private int life, weapon;
@@ -16,8 +14,8 @@ public class Character {
 		return life;
 	}
 
-	public void setLife(int life) {
-		this.life = life;
+	public int setLife(int life) {
+		return this.life = life;
 	}
 
 	public CombatClass getCombatClass() {

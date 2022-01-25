@@ -1,7 +1,7 @@
 package weapons;
 
 public class WpStaff extends Weapon {
-private final static int DAMAGE = 10;
+private final static int DAMAGE = 20;
 		
 	
 	public WpStaff() {
