@@ -41,14 +41,18 @@ public class SceneCombat extends Scene {
 					criticalDamage = currentDice + player.getCombatClass().getAttack()
 							+ player.getCombatClass().getWeapon().getWeaponDamage();
 					System.out.println(player.getPlayerName() + ", você acertou um ataque crítico! Você atacou "
-							+ player.getCombatClass().getWeapon().getWpComplement() + " e causou" + criticalDamage
-							+ "de dano no inimigo!");
+							+ player.getCombatClass().getWeapon().getWpComplement() + " e causou " + criticalDamage
+							+ " de dano no inimigo!");
 					enemy.setLife(enemy.getLife() - criticalDamage);
 
 				} else {
 					damage = currentDice + player.getCombatClass().getAttack()
-							+ player.getCombatClass().getWeapon().getWeaponDamage()
-							- enemy.getDefense(); // Supondo que defesa é sempre menor que os 3 juntos
+							+ player.getCombatClass().getWeapon().getWeaponDamage() - enemy.getDefense(); // Supondo que
+																											// defesa é
+																											// sempre
+																											// menor que
+																											// os 3
+																											// juntos
 					System.out.println(player.getPlayerName() + ", você atacou "
 							+ player.getCombatClass().getWeapon().getWpComplement() + " e causou" + damage
 							+ "de dano no inimigo!");
@@ -64,15 +68,13 @@ public class SceneCombat extends Scene {
 						System.out.println("O inimigo errou o ataque! Você não sofreu dano.");
 
 					} else if (currentDice == 20) {
-						criticalDamage = currentDice + enemy.getAttack()
-								+ enemy.getWeaponDamage();
+						criticalDamage = currentDice + enemy.getAttack() + enemy.getWeaponDamage();
 						int currentLife = player.setLife(player.getLife() - criticalDamage);
 						System.out.println("\nO inimigo acertou um ataque crítico! Você sofreu " + criticalDamage
 								+ " de dano e agora possui " + currentLife + " pontos de vida.");
 
 					} else {
-						damage = currentDice + enemy.getAttack()
-								+ enemy.getWeaponDamage()
+						damage = currentDice + enemy.getAttack() + enemy.getWeaponDamage()
 								- player.getCombatClass().getDefense();
 						int currentLife = player.setLife(player.getLife() - damage);
 						System.out.println("O inimigo atacou! Você sofreu " + damage + " de dano e agora possui "
@@ -98,18 +100,15 @@ public class SceneCombat extends Scene {
 								return combatResult;
 							}
 						}
-						System.out.println("\n\n- GAME OVER -");
+
 					}
 				}
 
 			} else if (decision == Parameters.RUNAWAY) {
 				System.out.println(player.getPlayerName()
 						+ ", você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
-				System.out.println("\n\n- GAME OVER -");
 				return combatResult;
 
-			} else {
-				System.out.println("Escolha uma opção válida.");
 			}
 
 		}

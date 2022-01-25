@@ -6,7 +6,6 @@ public class Player extends Character {
 	private String playerName;
 	private int sex;
 
-
 	public Player(String playerName, int life, int sex, CombatClass combatClass, int weapon) {
 		super(life, combatClass, weapon);
 		this.playerName = playerName;

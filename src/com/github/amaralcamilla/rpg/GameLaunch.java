@@ -2,7 +2,6 @@ package com.github.amaralcamilla.rpg;
 
 import java.util.Scanner;
 import characters.Enemy;
-import characters.EnemyAlchemist;
 import characters.EnemyGunsmith;
 import characters.Player;
 import scenes.SceneArmor;
@@ -12,7 +11,7 @@ import scenes.SceneGoAhead;
 import scenes.SceneMotivation;
 import scenes.ScenePotion;
 import scenes.Setup;
-import scenes.combat.SceneCombat;
+import scenes.combat.SceneCombat1;
 
 public class GameLaunch {
 	private static Scanner keyboard;
@@ -43,6 +42,10 @@ public class GameLaunch {
 
 		@SuppressWarnings("unused")
 		SceneGoAhead sceneGoAhead = new SceneGoAhead(keyboard);
+		
+		if (sceneGoAhead.getResult() != Parameters.GO_AHEAD) {
+			gameOver();
+		}
 
 		@SuppressWarnings("unused")
 		SceneCrossing sceneCrossing = new SceneCrossing(keyboard, player);
@@ -58,11 +61,10 @@ public class GameLaunch {
 		System.out.println(
 				"\nEnquanto seu olhar percorre a sala, você ouve a porta se fechando e gira rapidamente para olhar para trás. Ali, de pé entre você e a porta fechada, bloqueando o caminho do seu destino, está um dos capitães do inimigo. Um orque horrendo, de armadura, capacete e espada em punho, em posição de combate. Ele avança em sua direção.");
 
-		Enemy enemy = new Enemy(EnemyGunsmith.LIFE, EnemyGunsmith.ATTACK, EnemyGunsmith.DEFENSE, EnemyGunsmith.WEAPON_DAMAGE);
-		SceneCombat sceneCombat1 = new SceneCombat(keyboard, player, enemy);
+		Enemy enemyGunsmith = new Enemy(EnemyGunsmith.LIFE, EnemyGunsmith.ATTACK, EnemyGunsmith.DEFENSE, EnemyGunsmith.WEAPON_DAMAGE);
+		SceneCombat1 sceneCombat1 = new SceneCombat1(keyboard, player, enemyGunsmith);
 		if (sceneCombat1.getResult() != Parameters.WON) {
-			System.out.println("\n- GAME OVER -");
-			return;
+			gameOver();
 		}
 
 		System.out.println(
@@ -98,5 +100,10 @@ public class GameLaunch {
 		@SuppressWarnings("unused")
 		SceneFinalMessage sceneFinalMessage = new SceneFinalMessage(keyboard, player);
 
+	}
+
+	private static void gameOver() {
+		System.out.println("\n- GAME OVER -");
+		System.exit(0);
 	}
 }
