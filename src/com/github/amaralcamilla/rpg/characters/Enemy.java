@@ -1,6 +1,6 @@
 package com.github.amaralcamilla.rpg.characters;
 
-public class Enemy {
+public abstract class Enemy {
 	private int life, attack, defense, weaponDamage;
 
 	public Enemy(int life, int attack, int defense, int weaponDamage) {
