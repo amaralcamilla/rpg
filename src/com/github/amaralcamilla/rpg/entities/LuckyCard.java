@@ -10,9 +10,11 @@ public class LuckyCard {
 		
 		Dice dice = new Dice(13);
 		luckyCard = dice.rollDice();
-
+	
 		switch (luckyCard) {
-		case 1, 2, 3: {
+		case 1:
+		case 2: 
+		case 3: {
 			player.getCombatClass().getWeapon().setWeaponDamage(player.getCombatClass().getWeapon().getWeaponDamage() + 5);
 			if (player.getCombatClass().getWeapon().getClass().getSimpleName().equals("WpSword") ) {
 				System.out.println(
@@ -42,7 +44,9 @@ public class LuckyCard {
 			}
 			break;
 		}
-		case 4, 5, 6: {
+		case 4:
+		case 5:
+		case 6: {
 			if (player.getCombatClass().getClass().getSimpleName().equals("CcWarrior") || player.getCombatClass().getClass().getSimpleName().equals("CcHunter")) {
 				System.out.println("\nVocê está mesmo com sorte! Sua armadura agora é de titânio e sua defesa está ainda mais forte! Ganhou 5 pontos de defesa.");
 				player.getCombatClass().setDefense(player.getCombatClass().getDefense() + 5);
@@ -52,12 +56,16 @@ public class LuckyCard {
 			}
 			break;
 		}
-		case 7, 8, 9: {
+		case 7: 
+		case 8: 
+		case 9:{
 			System.out.println("\nEita, que azar! O inimigo ficou ainda mais forte! ");
 			player.getCombatClass().setAttack(player.getCombatClass().getAttack() - 5);
 			break;
 		}
-		case 10, 11, 12: {
+		case 10: 
+		case 11:
+		case 12:{
 			System.out.println("Veneno");
 			player.getCombatClass().setDefense(player.getCombatClass().getDefense() - 5);
 			break;
