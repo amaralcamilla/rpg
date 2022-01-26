@@ -12,16 +12,14 @@ public class Setup {
 	private static int selectedCombatClass;
 	private static int selectedWeapon;
 
-	public Setup(Player player) {
+	public Setup(Player player, Level level) {
 		keyboard = new Scanner(System.in);
-
-		@SuppressWarnings("unused")
-		Level level;
-
-		selectedLevel = Tools.getSelection(keyboard,
+		
+		/*selectedLevel = Tools.getSelection(keyboard,
 				"Escolha o nível de dificuldade: \n1: Fácil\n2: Normal\n3: Difícil ", 1, 3);
 		
 		level = Level.values()[selectedLevel - 1];
+		*/
 		
 		System.out.println("\nDigite seu nome de combate: ");
 		

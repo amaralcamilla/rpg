@@ -14,8 +14,11 @@ public class Character {
 		return life;
 	}
 
-	public int setLife(int life) {
-		return this.life = life;
+	public void setLife(int life) {
+		if (life < 0) {
+			life = 0;
+		}
+		this.life = life;
 	}
 
 	public CombatClass getCombatClass() {

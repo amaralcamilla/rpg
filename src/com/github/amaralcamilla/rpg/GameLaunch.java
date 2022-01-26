@@ -1,9 +1,11 @@
 package com.github.amaralcamilla.rpg;
-
 import java.util.Scanner;
-import characters.Enemy;
+
+import characters.EnemyAlchemist;
 import characters.EnemyGunsmith;
+import characters.EnemyLeader;
 import characters.Player;
+import entities.Level;
 import scenes.SceneArmor;
 import scenes.SceneCrossing;
 import scenes.SceneFinalMessage;
@@ -11,21 +13,29 @@ import scenes.SceneGoAhead;
 import scenes.SceneMotivation;
 import scenes.ScenePotion;
 import scenes.Setup;
-import scenes.combat.SceneCombat1;
+import scenes.combat.SceneCombat;
+
 
 public class GameLaunch {
 	private static Scanner keyboard;
 	private static Player player;
+	private static Level level;
+	private static int selectedLevel;
 
 	public static void main(String[] args) {
 		keyboard = new Scanner(System.in);
 
 		System.out.println("Seja bem vindo(a) à Batalha Final do House of DEVs!\n");
 		
+		selectedLevel = Tools.getSelection(keyboard,
+				"Escolha o nível de dificuldade: \n1: Fácil\n2: Normal\n3: Difícil ", 1, 3);
+		
+		level = Level.values()[selectedLevel - 1];
+		
 		player = new Player("", Parameters.DEFAULT_LIFE, -1, null, -1);
 		
 		@SuppressWarnings("unused")
-		Setup setup = new Setup(player);
+		Setup setup = new Setup(player, level);
 		
 		System.out.println(
 				"\nA noite se aproxima, a lua já surge no céu, estrelas vão se acendendo, e sob a luz do crepúsculo você está prestes a entrar na fase final da sua missão. Você olha para o portal à sua frente, e sabe que a partir desse ponto, sua vida mudará para sempre.");
@@ -61,8 +71,9 @@ public class GameLaunch {
 		System.out.println(
 				"\nEnquanto seu olhar percorre a sala, você ouve a porta se fechando e gira rapidamente para olhar para trás. Ali, de pé entre você e a porta fechada, bloqueando o caminho do seu destino, está um dos capitães do inimigo. Um orque horrendo, de armadura, capacete e espada em punho, em posição de combate. Ele avança em sua direção.");
 
-		Enemy enemyGunsmith = new Enemy(EnemyGunsmith.LIFE, EnemyGunsmith.ATTACK, EnemyGunsmith.DEFENSE, EnemyGunsmith.WEAPON_DAMAGE);
-		SceneCombat1 sceneCombat1 = new SceneCombat1(keyboard, player, enemyGunsmith);
+		EnemyGunsmith enemyGunsmith = new EnemyGunsmith();
+		SceneCombat sceneCombat1 = new SceneCombat(keyboard, player, enemyGunsmith, level);
+		
 		if (sceneCombat1.getResult() != Parameters.WON) {
 			gameOver();
 		}
@@ -82,12 +93,16 @@ public class GameLaunch {
 		System.out.println(
 				"\nNo fundo da sala, olhando em sua direção, está outro dos capitães do inimigo. Um orque horrendo, de armadura, cajado em punho, em posição de combate. Ele avança em sua direção.");
 
-		// TODO Combate 2
+		EnemyAlchemist enemyAlchemist = new EnemyAlchemist();
+		SceneCombat sceneCombat2 = new SceneCombat(keyboard, player, enemyAlchemist, level);
+		
+		if (sceneCombat2.getResult() != Parameters.WON) {
+			gameOver();
+		}
 
 		@SuppressWarnings("unused")
 		ScenePotion scenePotion = new ScenePotion(keyboard, player);
-
-		// combate3
+		
 		System.out.println(
 				"\nAo lado da porta, você vê uma chave dourada em cima de uma mesa, e sabe que aquela chave abre a outra fechadura da porta do líder inimigo. Você pega a chave e guarda na pequena bolsa que leva presa ao cinto.");
 		System.out.println(
@@ -96,6 +111,15 @@ public class GameLaunch {
 				"\nLá dentro, você vê o líder sentado em uma poltrona dourada, com duas fogueiras de cada lado, e prisioneiros acorrentados às paredes.");
 		System.out.println(
 				"\nEle percebe sua chegada e se levanta com um salto, apanhando seu machado de guerra de lâmina dupla.");
+		
+		
+		EnemyLeader enemyLeader = new EnemyLeader();
+		SceneCombat sceneCombat3 = new SceneCombat(keyboard, player, enemyLeader, level);
+		
+		if (sceneCombat3.getResult() != Parameters.WON) {
+			gameOver();
+		}
+		
 
 		@SuppressWarnings("unused")
 		SceneFinalMessage sceneFinalMessage = new SceneFinalMessage(keyboard, player);

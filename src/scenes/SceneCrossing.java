@@ -4,7 +4,7 @@ import java.util.Scanner;
 import com.github.amaralcamilla.rpg.Parameters;
 import com.github.amaralcamilla.rpg.Tools;
 import characters.Player;
-import entities.Dice10;
+import entities.Dice;
 
 public class SceneCrossing extends Scene {
 
@@ -20,7 +20,7 @@ public class SceneCrossing extends Scene {
 
 			//TODO if life > 0 
 			
-			Dice10 dice = new Dice10();
+			Dice dice = new Dice(10);
 			int damage = dice.rollDice();
 			player.setLife(player.getLife() - damage);
 			System.out.println("\nEssa doeu! Você levanta e segue com " + player.getLife() + " de vida.\n");
