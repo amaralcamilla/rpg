@@ -27,6 +27,7 @@ public class Parameters {
 
 	public static final int GO_AHEAD = 1;
 	public static final int RUNAWAY = 2;
+	public static final int LUCKY_CARD = 3;
 
 	public static final int POSITIVE_ANSWER = 1;
 	public static final int NEGATIVE_ANSWER = 2;

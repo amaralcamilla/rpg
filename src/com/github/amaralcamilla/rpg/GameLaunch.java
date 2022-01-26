@@ -25,10 +25,10 @@ public class GameLaunch {
 	public static void main(String[] args) {
 		keyboard = new Scanner(System.in);
 
-		System.out.println("Seja bem vindo(a) à Batalha Final do House of DEVs!\n");
+		System.out.println("Seja bem vindo(a) à Batalha Final do House of DEVs!");
 		
 		selectedLevel = Tools.getSelection(keyboard,
-				"Escolha o nível de dificuldade: \n1: Fácil\n2: Normal\n3: Difícil ", 1, 3);
+				"\nEscolha o nível de dificuldade: \n1: Fácil\n2: Normal\n3: Difícil ", 1, 3);
 		
 		level = Level.values()[selectedLevel - 1];
 		
@@ -48,9 +48,8 @@ public class GameLaunch {
 		System.out.println(
 				"\nInspirado pelo motivo que te trouxe até aqui, você sente seu coração ardendo em chamas, suas mãos formigarem em volta da sua arma. Você a segura com firmeza. Seu foco está renovado. Você avança pelo portal.");
 		System.out.println(
-				"\nA escuridão te envolve. Uma iluminação muito fraca entra pelo portal às suas costas. À sua frente, só é possível perceber que você se encontra em um corredor extenso. Você só pode ir à frente, ou desistir.");
+				"\nA escuridão te envolve. Uma iluminação muito fraca entra pelo portal às suas costas. À sua frente, só é possível perceber que você se encontra em um corredor extenso.");
 
-		@SuppressWarnings("unused")
 		SceneGoAhead sceneGoAhead = new SceneGoAhead(keyboard);
 		
 		if (sceneGoAhead.getResult() != Parameters.GO_AHEAD) {

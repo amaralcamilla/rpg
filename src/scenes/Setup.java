@@ -23,14 +23,14 @@ public class Setup {
 		
 		System.out.println("\nDigite seu nome de combate: ");
 		
-		String name = keyboard.next();
+		String name = keyboard.nextLine();
 		player.setPlayerName(name);
 
 		System.out.println("\nBoa escolha " + player.getPlayerName() + ", senti firmeza!");
 
 		int selectedSex = -1;
 
-		selectedSex = Tools.getSelection(keyboard, "Selecione o sexo do seu personagem:\n1: Masculino\n2: Feminino", 1, 2);
+		selectedSex = Tools.getSelection(keyboard, "\nSelecione o sexo do seu personagem:\n1: Masculino\n2: Feminino", 1, 2);
 		player.setSex(selectedSex);
 
 				

@@ -17,23 +17,23 @@ public abstract class CombatClass {
 	public int getAttack() {
 		return attack;
 	}
-
+public void setAttack(int i) {
+		this.attack = i;
+	}
 	public int getDefense() {
 		return defense;
 	}
-
-	public Weapon[] getWeapons() {
-		return weapons;
+public void setDefense(int i) {
+		this.defense = i;
 	}
+	/*public Weapon[] getWeapons() {
+		return weapons;
+	}*/
 
 	public Weapon getWeapon() {
 		return weapons[selectedWeapon];
 	}
 	
-	public void setDefense(int i) {
-		this.defense = i;
-	}
-
 	public int getSelectedWeapon() {
 		return selectedWeapon;
 	}
@@ -42,11 +42,4 @@ public abstract class CombatClass {
 		this.selectedWeapon = selectedWeapon;
 	}
 	
-	
-	
 }
-
-// Guerreiro/Guerreira: espada, machado, martelo
-// Caçador/Caçadora: arco+flecha, besta+virote
-// Sacerdote/Sacerdotisa: clava, livro
-// Feiticeiro/Feiticeira: cajado e livro

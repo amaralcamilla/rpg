@@ -25,6 +25,10 @@ public class Enemy {
 		return defense;
 	}
 	
+	public void setDefense(int defense) {
+		this.defense = defense;	
+	}
+	
 	public int getWeaponDamage() {
 		return weaponDamage;
 	}
@@ -32,5 +36,4 @@ public class Enemy {
 	public int setLife(int life) {
 		return this.life = life;
 	}
-
 }

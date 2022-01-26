@@ -19,13 +19,11 @@ public class SceneArmor extends Scene {
 			System.out.println("\nVocê resolve usar os equipamentos do inimigo contra ele, e trocar algumas peças suas, que estavam danificadas, pelas peças de armaduras existentes na sala.");
 			combatClass.setDefense(combatClass.getDefense() + 5);
 			System.out.println("De armadura nova, com " + combatClass.getDefense()
-			+ " pontos de defesa, você se sente mais protegido para os desafios à sua frente.\n");
-
-		} else if (armor == Parameters.NEGATIVE_ANSWER) {
-			System.out.println("\nVocê decide que não precisa utilizar nada que venha das mãos do inimigo.\n");
+			+ " pontos de defesa, você se sente mais protegido para os desafios à sua frente.");
 
 		} else {
-			System.out.println("\nDigite uma opção válida.\n");
-		}
+			System.out.println("\nVocê decide que não precisa utilizar nada que venha das mãos do inimigo.");
+
+		} 
 	}
 }

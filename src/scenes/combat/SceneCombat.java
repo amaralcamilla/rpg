@@ -7,6 +7,7 @@ import characters.Enemy;
 import characters.Player;
 import entities.Dice;
 import entities.Level;
+import entities.LuckyCard;
 import scenes.Scene;
 import scenes.SceneMotivation;
 
@@ -14,8 +15,9 @@ public class SceneCombat extends Scene {
 	public Player player;
 	public Enemy enemy;
 	public int combatResult = Parameters.LOST;
-	private int decision, damage, criticalDamage, currentDice;
+	private int decision, damage, criticalDamage, playerDice, enemyDice;
 	private Level level;
+	private int luckyCardsCounter = 3;
 
 	public SceneCombat(Scanner keyboard, Player player, Enemy enemy, Level level) {
 		super(keyboard);
@@ -28,29 +30,32 @@ public class SceneCombat extends Scene {
 	public void combatLoop() {
 		while (true) {
 
-			decision = Tools.getSelection(keyboard, "1: Atacar!\n2: Fugir.", 1, 2);
+			decision = Tools.getSelection(keyboard, "\n1: Atacar!\n2: Fugir.\n3: Pegar uma carta da sorte (ou azar).", 1, 3);
 
 			if (decision == Parameters.GO_AHEAD) {
 
 				Dice dice = new Dice(20);
-				currentDice = dice.rollDice();
+				playerDice = dice.rollDice();
 
-				if (currentDice == 1) {
-					System.out.println(
-							player.getPlayerName() + ", você errou seu ataque! O inimigo não sofreu dano algum.");
+				if (playerDice == 1) {
+					System.out.println("\n" + player.getPlayerName()
+							+ ", você errou seu ataque! O inimigo não sofreu dano algum.");
 
-				} else if (currentDice == 20) {
-					criticalDamage = (int) level.getPlayerDamage() * calculateDamage(currentDice + player.getCombatClass().getAttack() + player.getCombatClass().getWeapon().getWeaponDamage());
-					System.out.println(player.getPlayerName() + ", você acertou um ataque crítico! Você atacou "
+				} else if (playerDice == 20) {
+					criticalDamage = (int) (level.getPlayerDamage()
+							* calculateDamage(playerDice + player.getCombatClass().getAttack()
+									+ player.getCombatClass().getWeapon().getWeaponDamage()));
+					System.out.println("\n" + player.getPlayerName() + ", você acertou um ataque crítico! Você atacou "
 							+ player.getCombatClass().getWeapon().getWpComplement() + " e causou " + criticalDamage
 							+ " de dano no inimigo!");
 					enemy.setLife(enemy.getLife() - criticalDamage);
 
 				} else {
-					damage = (int) level.getPlayerDamage() * calculateDamage(currentDice + player.getCombatClass().getAttack()
-							+ player.getCombatClass().getWeapon().getWeaponDamage() - enemy.getDefense());
+					damage = (int) (level.getPlayerDamage()
+							* calculateDamage(playerDice + player.getCombatClass().getAttack()
+									+ player.getCombatClass().getWeapon().getWeaponDamage() - enemy.getDefense()));
 
-					System.out.println(player.getPlayerName() + ", você atacou "
+					System.out.println("\n" + player.getPlayerName() + ", você atacou "
 							+ player.getCombatClass().getWeapon().getWpComplement() + " e causou " + damage
 							+ " de dano no inimigo!");
 					enemy.setLife(enemy.getLife() - damage);
@@ -59,40 +64,41 @@ public class SceneCombat extends Scene {
 				// TODO: refatorar para usar método único para inimigo e player
 
 				if (enemy.getLife() > 0) {
-					currentDice = dice.rollDice();
+					enemyDice = dice.rollDice();
 
-					if (currentDice == 1) {
-						System.out.println("O inimigo errou o ataque! Você não sofreu dano.");
+					if (enemyDice == 1) {
+						System.out.println("\nO inimigo errou o ataque! Você não sofreu dano.");
 
-					} else if (currentDice == 20) {
-						criticalDamage = (int) level.getEnemyDamage() * calculateDamage(currentDice + enemy.getAttack() + enemy.getWeaponDamage());
+					} else if (enemyDice == 20) {
+						criticalDamage = (int) (level.getEnemyDamage()
+								* calculateDamage(enemyDice + enemy.getAttack() + enemy.getWeaponDamage()));
 						player.setLife(player.getLife() - criticalDamage);
 						System.out.println("\nO inimigo acertou um ataque crítico! Você sofreu " + criticalDamage
 								+ " de dano e agora possui " + player.getLife() + " pontos de vida.");
 
 					} else {
-						damage = (int) level.getEnemyDamage() * calculateDamage(currentDice + enemy.getAttack() + enemy.getWeaponDamage()
-								- player.getCombatClass().getDefense());
-						
-						
-						//TODO System.out.println(">>>>>>>>>>>" + currentDice + " " + enemy.getAttack() + " " + enemy.getWeaponDamage()+ " " + player.getCombatClass().getDefense());
-						
+						damage = (int) (level.getEnemyDamage() * calculateDamage(enemyDice + enemy.getAttack()
+								+ enemy.getWeaponDamage() - player.getCombatClass().getDefense()));
+
 						
 						player.setLife(player.getLife() - damage);
-						System.out.println("O inimigo atacou! Você sofreu " + damage + " de dano e agora possui "
-								+ player.getLife() + " pontos de vida");
+						System.out.println("\nO inimigo atacou! Você sofreu " + damage + " de dano e agora possui "
+								+ player.getLife() + " pontos de vida.");
+						
 					}
 
 				} else {
+					System.out.println("\nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 					combatResult = Parameters.WON;
 					return;
 				}
 				if (player.getLife() <= 0) {
 					combatResult = Parameters.LOST;
-					System.out.println(player.getPlayerName() + ", você não estava preparado para a força do inimigo.");
+					System.out.println(
+							"\n" + player.getPlayerName() + ", você não estava preparado para a força do inimigo.");
 					if (SceneMotivation.getMotivation() == Parameters.REVENGE) {
 						System.out.printf(
-								"Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.");
+								"\nNão foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.");
 					} else if (SceneMotivation.getMotivation() == Parameters.GLORY) {
 						if (player.getSex() == Parameters.MASC) {
 							System.out.println(
@@ -104,21 +110,27 @@ public class SceneCombat extends Scene {
 					}
 					return;
 				}
-
-			} else {
-				System.out.println(player.getPlayerName()
+			} else if (decision == Parameters.RUNAWAY) {
+				System.out.println("\n" + player.getPlayerName()
 						+ ", você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
 				return;
-
+			} else {
+				if (luckyCardsCounter > 0 ) {
+					@SuppressWarnings("unused")
+				LuckyCard luckyCard = new LuckyCard(player, enemy);
+					luckyCardsCounter--;
+				} else {
+					System.out.println("Acabaram as cartas");
+				}
+				
 			}
-
 		}
 	}
 
 	public int getResult() {
 		return combatResult;
 	}
-	
+
 	public int calculateDamage(int damage) {
 		if (damage < 0) {
 			return 0;

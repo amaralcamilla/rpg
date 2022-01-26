@@ -5,8 +5,8 @@ import weapons.WpBook;
 import weapons.WpClub;
 
 public class CcPriest extends CombatClass {
-	private final static int ATTACK = 55;
-	private final static int DEFENSE = 25;
+	private final static int ATTACK = 21;
+	private final static int DEFENSE = 21;
 	private final static Weapon[] WEAPONS = {new WpClub(), new WpBook()};	
 	
 	
