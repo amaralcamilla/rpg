@@ -1,15 +1,14 @@
-package com.github.amaralcamilla.rpg.scenes.combat;
+package com.github.amaralcamilla.rpg.scenes;
 
 import java.util.Scanner;
-import com.github.amaralcamilla.rpg.Parameters;
-import com.github.amaralcamilla.rpg.Tools;
+
 import com.github.amaralcamilla.rpg.characters.Enemy;
 import com.github.amaralcamilla.rpg.characters.Player;
 import com.github.amaralcamilla.rpg.entities.Dice;
 import com.github.amaralcamilla.rpg.entities.Level;
 import com.github.amaralcamilla.rpg.entities.LuckyCard;
-import com.github.amaralcamilla.rpg.scenes.Scene;
-import com.github.amaralcamilla.rpg.scenes.SceneMotivation;
+import com.github.amaralcamilla.rpg.entities.Parameters;
+import com.github.amaralcamilla.rpg.entities.Tools;
 
 public class SceneCombat extends Scene {
 	public Player player;

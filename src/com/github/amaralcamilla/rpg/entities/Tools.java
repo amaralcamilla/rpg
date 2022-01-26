@@ -1,4 +1,4 @@
-package com.github.amaralcamilla.rpg;
+package com.github.amaralcamilla.rpg.entities;
 
 import java.util.Scanner;
 

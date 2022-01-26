@@ -1,8 +1,9 @@
 package com.github.amaralcamilla.rpg.scenes;
 
 import java.util.Scanner;
-import com.github.amaralcamilla.rpg.Parameters;
-import com.github.amaralcamilla.rpg.Tools;
+
+import com.github.amaralcamilla.rpg.entities.Parameters;
+import com.github.amaralcamilla.rpg.entities.Tools;
 
 public class SceneMotivation extends Scene {
 	protected static int motivation;

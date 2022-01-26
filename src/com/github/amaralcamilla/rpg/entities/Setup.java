@@ -1,10 +1,8 @@
-package com.github.amaralcamilla.rpg.scenes;
+package com.github.amaralcamilla.rpg.entities;
 
 import java.util.Scanner;
-import com.github.amaralcamilla.rpg.Parameters;
-import com.github.amaralcamilla.rpg.Tools;
+
 import com.github.amaralcamilla.rpg.characters.Player;
-import com.github.amaralcamilla.rpg.entities.Level;
 
 public class Setup {
 	private static Scanner keyboard;

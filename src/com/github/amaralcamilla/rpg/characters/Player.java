@@ -1,6 +1,6 @@
 package com.github.amaralcamilla.rpg.characters;
 
-import com.github.amaralcamilla.rpg.Parameters;
+import com.github.amaralcamilla.rpg.entities.Parameters;
 
 public class Player extends Character {
 	private String playerName;

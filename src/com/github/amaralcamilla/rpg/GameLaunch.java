@@ -6,14 +6,16 @@ import com.github.amaralcamilla.rpg.characters.EnemyGunsmith;
 import com.github.amaralcamilla.rpg.characters.EnemyLeader;
 import com.github.amaralcamilla.rpg.characters.Player;
 import com.github.amaralcamilla.rpg.entities.Level;
+import com.github.amaralcamilla.rpg.entities.Parameters;
+import com.github.amaralcamilla.rpg.entities.Setup;
+import com.github.amaralcamilla.rpg.entities.Tools;
 import com.github.amaralcamilla.rpg.scenes.SceneArmor;
+import com.github.amaralcamilla.rpg.scenes.SceneCombat;
 import com.github.amaralcamilla.rpg.scenes.SceneCrossing;
 import com.github.amaralcamilla.rpg.scenes.SceneFinalMessage;
 import com.github.amaralcamilla.rpg.scenes.SceneGoAhead;
 import com.github.amaralcamilla.rpg.scenes.SceneMotivation;
 import com.github.amaralcamilla.rpg.scenes.ScenePotion;
-import com.github.amaralcamilla.rpg.scenes.Setup;
-import com.github.amaralcamilla.rpg.scenes.combat.SceneCombat;
 
 
 public class GameLaunch {

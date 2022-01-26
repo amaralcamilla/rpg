@@ -1,8 +1,9 @@
 package com.github.amaralcamilla.rpg.scenes;
 
 import java.util.Scanner;
-import com.github.amaralcamilla.rpg.Parameters;
+
 import com.github.amaralcamilla.rpg.characters.Player;
+import com.github.amaralcamilla.rpg.entities.Parameters;
 
 public class SceneFinalMessage extends Scene {
 

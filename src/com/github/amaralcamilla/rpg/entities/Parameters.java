@@ -1,4 +1,4 @@
-package com.github.amaralcamilla.rpg;
+package com.github.amaralcamilla.rpg.entities;
 
 public class Parameters {
 	public static final int EASY_LEVEL = 1;
