@@ -1,7 +1,6 @@
 package com.github.amaralcamilla.rpg.scenes;
 
 import java.util.Scanner;
-
 import com.github.amaralcamilla.rpg.characters.Enemy;
 import com.github.amaralcamilla.rpg.characters.Player;
 import com.github.amaralcamilla.rpg.entities.Dice;
@@ -12,11 +11,11 @@ import com.github.amaralcamilla.rpg.entities.Tools;
 
 public class SceneCombat extends Scene {
 	public Player player;
-	public Enemy enemy;
-	public int combatResult = Parameters.LOST;
-	private int decision, damage, criticalDamage, playerDice, enemyDice;
+	public Enemy enemy;	
 	private Level level;
-	private int luckyCardsCounter = 3;
+	private int decision, damage, criticalDamage, playerDice, enemyDice;
+	public int combatResult = Parameters.LOST;
+	private int luckyCardsCounter = 2;
 
 	public SceneCombat(Scanner keyboard, Player player, Enemy enemy, Level level) {
 		super(keyboard);
@@ -28,35 +27,31 @@ public class SceneCombat extends Scene {
 
 	public void combatLoop() {
 		while (true) {
-
 			decision = Tools.getSelection(keyboard, "\n1: Atacar!\n2: Fugir.\n3: Pegar uma carta da sorte (ou azar).", 1, 3);
 
 			if (decision == Parameters.GO_AHEAD) {
-
 				Dice dice = new Dice(20);
 				playerDice = dice.rollDice();
 
 				if (playerDice == 1) {
-					System.out.println("\n" + player.getPlayerName()
-							+ ", você errou seu ataque! O inimigo não sofreu dano algum.");
+					System.out.println("\n" + player.getPlayerName() + ", você errou seu ataque! O inimigo não sofreu dano algum.");
 
 				} else if (playerDice == 20) {
-					criticalDamage = (int) (level.getPlayerDamage()
-							* calculateDamage(playerDice + player.getCombatClass().getAttack()
-									+ player.getCombatClass().getWeapon().getWeaponDamage()));
-					System.out.println("\n" + player.getPlayerName() + ", você acertou um ataque crítico! Você atacou "
-							+ player.getCombatClass().getWeapon().getWpComplement() + " e causou " + criticalDamage
-							+ " de dano no inimigo!");
+					criticalDamage = (int) (level.getPlayerDamage() * calculateDamage(playerDice + player.getCombatClass().getAttack() 
+							+ player.getCombatClass().getWeapon().getWeaponDamage()));
+					
+					System.out.println("\n" + player.getPlayerName() + ", você acertou um ataque crítico! Você atacou " 
+					+ player.getCombatClass().getWeapon().getWpComplement() + " e causou " + criticalDamage + " de dano no inimigo!");
+					
 					enemy.setLife(enemy.getLife() - criticalDamage);
 
 				} else {
-					damage = (int) (level.getPlayerDamage()
-							* calculateDamage(playerDice + player.getCombatClass().getAttack()
+					damage = (int) (level.getPlayerDamage() * calculateDamage(playerDice + player.getCombatClass().getAttack()
 									+ player.getCombatClass().getWeapon().getWeaponDamage() - enemy.getDefense()));
 
-					System.out.println("\n" + player.getPlayerName() + ", você atacou "
-							+ player.getCombatClass().getWeapon().getWpComplement() + " e causou " + damage
+					System.out.println("\n" + player.getPlayerName() + ", você atacou " + player.getCombatClass().getWeapon().getWpComplement() + " e causou " + damage
 							+ " de dano no inimigo!");
+					
 					enemy.setLife(enemy.getLife() - damage);
 				}
 
@@ -69,21 +64,19 @@ public class SceneCombat extends Scene {
 						System.out.println("\nO inimigo errou o ataque! Você não sofreu dano.");
 
 					} else if (enemyDice == 20) {
-						criticalDamage = (int) (level.getEnemyDamage()
-								* calculateDamage(enemyDice + enemy.getAttack() + enemy.getWeaponDamage()));
+						criticalDamage = (int) (level.getEnemyDamage() * calculateDamage(enemyDice + enemy.getAttack() + enemy.getWeaponDamage()));
 						player.setLife(player.getLife() - criticalDamage);
-						System.out.println("\nO inimigo acertou um ataque crítico! Você sofreu " + criticalDamage
+						
+						System.out.println("\nO inimigo acertou um ataque crítico! Você sofreu " + criticalDamage 
 								+ " de dano e agora possui " + player.getLife() + " pontos de vida.");
 
 					} else {
 						damage = (int) (level.getEnemyDamage() * calculateDamage(enemyDice + enemy.getAttack()
 								+ enemy.getWeaponDamage() - player.getCombatClass().getDefense()));
 
-						
 						player.setLife(player.getLife() - damage);
-						System.out.println("\nO inimigo atacou! Você sofreu " + damage + " de dano e agora possui "
-								+ player.getLife() + " pontos de vida.");
 						
+						System.out.println("\nO inimigo atacou! Você sofreu " + damage + " de dano e agora possui " + player.getLife() + " pontos de vida.");
 					}
 
 				} else {
@@ -91,6 +84,7 @@ public class SceneCombat extends Scene {
 					combatResult = Parameters.WON;
 					return;
 				}
+				
 				if (player.getLife() <= 0) {
 					combatResult = Parameters.LOST;
 					System.out.println(
@@ -98,30 +92,30 @@ public class SceneCombat extends Scene {
 					if (SceneMotivation.getMotivation() == Parameters.REVENGE) {
 						System.out.printf(
 								"\nNão foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.");
+					
 					} else if (SceneMotivation.getMotivation() == Parameters.GLORY) {
 						if (player.getSex() == Parameters.MASC) {
-							System.out.println(
-									"A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.");
+							System.out.println("A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.");
 						} else {
-							System.out.println(
-									"A glória que buscavas não será sua, e a cidade aguarda por sua próxima heroína.");
+							System.out.println("A glória que buscavas não será sua, e a cidade aguarda por sua próxima heroína.");
 						}
 					}
 					return;
 				}
+				
 			} else if (decision == Parameters.RUNAWAY) {
 				System.out.println("\n" + player.getPlayerName()
 						+ ", você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
 				return;
+				
 			} else {
-				if (luckyCardsCounter > 0 ) {
+				if (luckyCardsCounter > 0) {
 					@SuppressWarnings("unused")
-				LuckyCard luckyCard = new LuckyCard(player, enemy);
+					LuckyCard luckyCard = new LuckyCard(player, enemy);
 					luckyCardsCounter--;
 				} else {
-					System.out.println("Acabaram as cartas");
+					System.out.println("\nVocê só pode pegar 2 cartas. Hora de encarar a realidade.");
 				}
-				
 			}
 		}
 	}

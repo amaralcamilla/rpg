@@ -17,4 +17,3 @@ public abstract class Weapon {
 
 	public abstract String getWpComplement();
 }
-

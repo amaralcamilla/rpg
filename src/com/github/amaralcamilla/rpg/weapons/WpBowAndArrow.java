@@ -1,7 +1,7 @@
 package com.github.amaralcamilla.rpg.weapons;
 
 public class WpBowAndArrow extends Weapon {
-	private final static int DAMAGE = 5;
+	private final static int DAMAGE = 10;
 		
 	public WpBowAndArrow() {
 		super(DAMAGE);

@@ -1,22 +1,14 @@
 package com.github.amaralcamilla.rpg.entities;
 
 import java.util.Scanner;
-
 import com.github.amaralcamilla.rpg.characters.Player;
 
 public class Setup {
 	private static Scanner keyboard;
-	private static int selectedCombatClass;
-	private static int selectedWeapon;
+	private static int selectedCombatClass, selectedWeapon;
 
 	public Setup(Player player, Level level) {
 		keyboard = new Scanner(System.in);
-		
-		/*selectedLevel = Tools.getSelection(keyboard,
-				"Escolha o nível de dificuldade: \n1: Fácil\n2: Normal\n3: Difícil ", 1, 3);
-		
-		level = Level.values()[selectedLevel - 1];
-		*/
 		
 		System.out.println("\nDigite seu nome de combate: ");
 		
@@ -32,19 +24,15 @@ public class Setup {
 
 				
 		if (selectedSex == Parameters.MASC) {
-			selectedCombatClass = Tools.getSelection(keyboard,
-					"\nEscolha uma classe de combate para enfrentar todos os inimigos: \n1: Guerreiro\n2: Caçador\n3: Sacerdote\n4: Feiticeiro", 1, 4);
+			selectedCombatClass = Tools.getSelection(keyboard, "\nEscolha uma classe de combate para enfrentar todos os inimigos: \n1: Guerreiro\n2: Caçador\n3: Sacerdote\n4: Feiticeiro", 1, 4);
 			player.setCombatClass(selectedCombatClass);
 		} else {
-			selectedCombatClass = Tools.getSelection(keyboard,
-					"\nEscolha uma classe de combate para enfrentar todos os inimigos: \n1: Guerreira\n2: Caçadora\n3: Sacerdotisa\n4: Feiticeira", 1,
-					4);
+			selectedCombatClass = Tools.getSelection(keyboard, "\nEscolha uma classe de combate para enfrentar todos os inimigos: \n1: Guerreira\n2: Caçadora\n3: Sacerdotisa\n4: Feiticeira", 1, 4);
 			player.setCombatClass(selectedCombatClass);
 		}
 
 		switch (selectedCombatClass) {
 		case Parameters.WARRIOR: {
-
 			selectedWeapon = Tools.getSelection(keyboard, "\nEscolha uma arma para arrasar nos combates: \n1: Espada\n2: Machado\n3: Martelo", 1, 3);
 			break;
 		}
@@ -64,8 +52,6 @@ public class Setup {
 			throw new Error("Digite uma opção válida!");
 		}
 
-		player.getCombatClass().setSelectedWeapon(selectedWeapon - 1);
-		
+		player.getCombatClass().setSelectedWeapon(selectedWeapon - 1);	
 	}
-	
 }

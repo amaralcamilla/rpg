@@ -11,6 +11,4 @@ public class WpAxe extends Weapon {
 	public String getWpComplement() {
 		return "com seu machado";
 	}
-
-	
 }

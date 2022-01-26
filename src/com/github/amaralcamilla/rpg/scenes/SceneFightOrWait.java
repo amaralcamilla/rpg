@@ -1,7 +1,6 @@
 package com.github.amaralcamilla.rpg.scenes;
 
 import java.util.Scanner;
-
 import com.github.amaralcamilla.rpg.characters.Enemy;
 import com.github.amaralcamilla.rpg.characters.Player;
 import com.github.amaralcamilla.rpg.entities.Level;

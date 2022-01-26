@@ -18,6 +18,9 @@ public class Character {
 		if (life < 0) {
 			life = 0;
 		}
+		if (life > 100) {
+			life = 100;
+		}
 		this.life = life;
 	}
 
@@ -32,5 +35,4 @@ public class Character {
 	public int getWeapon() {
 		return weapon;
 	}
-
 }

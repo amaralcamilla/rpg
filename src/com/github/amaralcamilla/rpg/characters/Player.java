@@ -15,6 +15,7 @@ public class Player extends Character {
 	public String getPlayerName() {
 		return playerName;
 	}
+	
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
@@ -27,7 +28,6 @@ public class Player extends Character {
 	}
 
 	public void setCombatClass(int selectedCombatClass) {
-
 		switch (selectedCombatClass) {
 		case Parameters.WARRIOR: {
 			setCombatClass(new CcWarrior());
@@ -47,8 +47,6 @@ public class Player extends Character {
 		}
 		default:
 			throw new Error("Digite uma opção válida.");
-		}
-		
+		}	
 	}
-
 }

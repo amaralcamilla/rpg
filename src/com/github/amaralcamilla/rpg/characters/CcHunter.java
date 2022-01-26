@@ -9,7 +9,6 @@ public class CcHunter extends CombatClass {
 	private final static int DEFENSE = 22;
 	private final static Weapon[] WEAPONS = {new WpBowAndArrow(), new WpCrossbowAndBolt()};	
 	
-	
 	public CcHunter() {
 		super(ATTACK, DEFENSE, WEAPONS);
 	}
