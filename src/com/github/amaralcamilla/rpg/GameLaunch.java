@@ -1,19 +1,19 @@
 package com.github.amaralcamilla.rpg;
 import java.util.Scanner;
 
-import characters.EnemyAlchemist;
-import characters.EnemyGunsmith;
-import characters.EnemyLeader;
-import characters.Player;
-import entities.Level;
-import scenes.SceneArmor;
-import scenes.SceneCrossing;
-import scenes.SceneFinalMessage;
-import scenes.SceneGoAhead;
-import scenes.SceneMotivation;
-import scenes.ScenePotion;
-import scenes.Setup;
-import scenes.combat.SceneCombat;
+import com.github.amaralcamilla.rpg.characters.EnemyAlchemist;
+import com.github.amaralcamilla.rpg.characters.EnemyGunsmith;
+import com.github.amaralcamilla.rpg.characters.EnemyLeader;
+import com.github.amaralcamilla.rpg.characters.Player;
+import com.github.amaralcamilla.rpg.entities.Level;
+import com.github.amaralcamilla.rpg.scenes.SceneArmor;
+import com.github.amaralcamilla.rpg.scenes.SceneCrossing;
+import com.github.amaralcamilla.rpg.scenes.SceneFinalMessage;
+import com.github.amaralcamilla.rpg.scenes.SceneGoAhead;
+import com.github.amaralcamilla.rpg.scenes.SceneMotivation;
+import com.github.amaralcamilla.rpg.scenes.ScenePotion;
+import com.github.amaralcamilla.rpg.scenes.Setup;
+import com.github.amaralcamilla.rpg.scenes.combat.SceneCombat;
 
 
 public class GameLaunch {
